@@ -1,8 +1,0 @@
-C:\Program Files\MAIN\3_course\kpz\lab_1\code\OlehMatsevych.RobotChallange\OlehMatsevych.RobotChallange\bin\Debug\OlehMatsevych.RobotChallange.dll
-C:\Program Files\MAIN\3_course\kpz\lab_1\code\OlehMatsevych.RobotChallange\OlehMatsevych.RobotChallange\bin\Debug\OlehMatsevych.RobotChallange.pdb
-C:\Program Files\MAIN\3_course\kpz\lab_1\code\OlehMatsevych.RobotChallange\OlehMatsevych.RobotChallange\bin\Debug\Robot.Common.dll
-C:\Program Files\MAIN\3_course\kpz\lab_1\code\OlehMatsevych.RobotChallange\OlehMatsevych.RobotChallange\obj\Debug\OlehMatsevych.RobotChallange.csprojAssemblyReference.cache
-C:\Program Files\MAIN\3_course\kpz\lab_1\code\OlehMatsevych.RobotChallange\OlehMatsevych.RobotChallange\obj\Debug\OlehMatsevych.RobotChallange.csproj.CoreCompileInputs.cache
-C:\Program Files\MAIN\3_course\kpz\lab_1\code\OlehMatsevych.RobotChallange\OlehMatsevych.RobotChallange\obj\Debug\OlehMatsevych.RobotChallange.csproj.CopyComplete
-C:\Program Files\MAIN\3_course\kpz\lab_1\code\OlehMatsevych.RobotChallange\OlehMatsevych.RobotChallange\obj\Debug\OlehMatsevych.RobotChallange.dll
-C:\Program Files\MAIN\3_course\kpz\lab_1\code\OlehMatsevych.RobotChallange\OlehMatsevych.RobotChallange\obj\Debug\OlehMatsevych.RobotChallange.pdb
