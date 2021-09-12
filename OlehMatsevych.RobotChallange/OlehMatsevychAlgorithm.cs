@@ -1,5 +1,4 @@
-﻿using OlehMatsevych.RobotChallange.Constants;
-using OlehMatsevych.RobotChallange.Utils;
+﻿using OlehMatsevych.RobotChallange.Algorithms;
 using Robot.Common;
 using System;
 using System.Collections.Generic;
@@ -12,23 +11,8 @@ namespace OlehMatsevych.RobotChallange
 
         public RobotCommand DoStep(IList<Robot.Common.Robot> robots, int robotToMoveIndex, Map map)
         {
-            var robot = robots[robotToMoveIndex];
-
-            if ((robot.Energy > Settings.MinEnergyForCreateNewRobot) && (robots.Count < map.Stations.Count))
-            {
-                return new CreateNewRobotCommand();
-            }
-
-            Position stationPosition = StationHelper.FindNearestFreeStation(robots[robotToMoveIndex], map, robots);
-            if (stationPosition == null) 
-                return null;
-            if (stationPosition == robot.Position)
-                return new CollectEnergyCommand();
-            else
-            {
-                return new MoveCommand() { NewPosition = stationPosition };
-            }
-
+            var step = new Step(robots, robotToMoveIndex ,map);
+            return step.Execute();
         }
     }
 }

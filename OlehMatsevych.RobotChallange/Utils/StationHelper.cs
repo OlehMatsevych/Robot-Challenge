@@ -5,7 +5,9 @@ namespace OlehMatsevych.RobotChallange.Utils
 {
     public class StationHelper
     {
-        public static Position FindNearestFreeStation(Robot.Common.Robot movingRobot, Map map,
+
+        private CellHelper cellHelper { get; set; } = new CellHelper();
+        public Position FindNearestFreeStation(Robot.Common.Robot movingRobot, Map map,
             IList<Robot.Common.Robot> robots)
         {
             EnergyStation nearest = null;
@@ -25,10 +27,10 @@ namespace OlehMatsevych.RobotChallange.Utils
             }
             return nearest == null ? null : nearest.Position;
         }
-        public static bool IsStationFree(EnergyStation station, Robot.Common.Robot movingRobot,
+        public bool IsStationFree(EnergyStation station, Robot.Common.Robot movingRobot,
         IList<Robot.Common.Robot> robots)
         {
-            return CellHelper.IsCellFree(station.Position, movingRobot, robots);
+            return cellHelper.IsCellFree(station.Position, movingRobot, robots);
         }
     }
 }
