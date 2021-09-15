@@ -44,7 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants\StartSettings.cs" />
+    <Compile Include="Algorithms\EnableEnergyDistance.cs" />
+    <Compile Include="Algorithms\RoboStepAlgo.cs" />
+    <Compile Include="Constants\CustomSettings.cs" />
+    <Compile Include="Constants\VariantSettings.cs" />
     <Compile Include="OlehMatsevychAlgorithm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\CellHelper.cs" />

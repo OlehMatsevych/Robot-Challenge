@@ -5,14 +5,14 @@ namespace OlehMatsevych.RobotChallange.Constants
 {
     public class Settings
     {
-        public static int MinEnergyForCreateNewRobot { get; private set; } = 200;
+        public static int MinEnergyForCreateNewRobot { get; private set; } = 400;
 
         public enum RobotTypeByEnergy
         {
             Master = 1000,
-            Strong = 750,
-            Miiddle = 500,
-            Junior = 100,
+            Strong = 800,
+            Miiddle = 700,
+            Junior = 200,
         }
         public enum MovingTypes
         {

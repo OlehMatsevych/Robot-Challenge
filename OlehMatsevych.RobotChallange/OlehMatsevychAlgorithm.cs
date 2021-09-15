@@ -11,7 +11,7 @@ namespace OlehMatsevych.RobotChallange
 
         public RobotCommand DoStep(IList<Robot.Common.Robot> robots, int robotToMoveIndex, Map map)
         {
-            var step = new Step(robots, robotToMoveIndex ,map);
+            var step = new RoboStepAlgo(robots, robotToMoveIndex ,map);
             return step.Execute();
         }
     }

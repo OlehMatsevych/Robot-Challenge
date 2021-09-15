@@ -18,7 +18,6 @@ namespace OlehMatsevych.RobotChallange.Utils
                 {
                     int d = DistanceHelper.FindDistance(station.Position, movingRobot.Position);
                     if (d < minDistance)
-
                     {
                         minDistance = d;
                         nearest = station;
