@@ -8,11 +8,27 @@ namespace OlehMatsevych.RobotChallange
     public class OlehMatsevychAlgorithm : IRobotAlgorithm
     {
         public string Author { get { return "Oleh Matsevych"; } }
+        public int Round { get; set; }
 
+        public OlehMatsevychAlgorithm()
+        {
+            Logger.OnLogRound += OnLogRoundLogger;
+        }
+        private void OnLogRoundLogger(object sender, LogRoundEventArgs e)
+        {
+            Round++;
+        }
         public RobotCommand DoStep(IList<Robot.Common.Robot> robots, int robotToMoveIndex, Map map)
         {
-            var step = new RoboStepAlgo(robots, robotToMoveIndex ,map);
-            return step.Execute();
+            try
+            {
+                var step = new RoboStepAlgo(robots, robotToMoveIndex ,map);
+                return step.Execute();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
