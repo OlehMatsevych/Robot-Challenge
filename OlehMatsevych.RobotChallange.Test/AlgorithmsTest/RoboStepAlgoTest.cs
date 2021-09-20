@@ -13,7 +13,7 @@ namespace OlehMatsevych.RobotChallange.Test
         private IList<Hero> Robots { get; set; }
         private int RobotToMoveIndex { get; set; }
         private Map Map { get; set; }
-
+        private int Round { get; set; }
 
         [TestInitialize]
         public void TestInitialize()
@@ -32,8 +32,8 @@ namespace OlehMatsevych.RobotChallange.Test
             {
                 Stations = stations
             };
-
-            algo = new RoboStepAlgo(Robots,RobotToMoveIndex,Map);
+            Round = 3;
+            algo = new RoboStepAlgo(Robots,RobotToMoveIndex,Map, Round);
         }
 
         [TestMethod]

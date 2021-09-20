@@ -21,7 +21,7 @@ namespace OlehMatsevych.RobotChallange.Test.AlgorithmsTest
             };
             Robot.Common.Robot movingRobot = new Robot.Common.Robot()
             {
-                Position = new Position() { X = 6, Y = 1 }
+                Position = new Position() { X = 5, Y = 1 }
             };
 
 

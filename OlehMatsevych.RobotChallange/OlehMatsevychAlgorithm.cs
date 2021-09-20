@@ -22,7 +22,7 @@ namespace OlehMatsevych.RobotChallange
         {
             try
             {
-                var step = new RoboStepAlgo(robots, robotToMoveIndex ,map);
+                var step = new RoboStepAlgo(robots, robotToMoveIndex ,map, Round);
                 return step.Execute();
             }
             catch (Exception ex)

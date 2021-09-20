@@ -24,13 +24,16 @@ namespace OlehMatsevych.RobotChallange.Algorithms
         private delegate void Executer();
         private delegate void PriorityAlgorithn();
 
+        int Round;
+
         public RoboStepAlgo() { }
-        public RoboStepAlgo(IList<Hero> robots, int robotToMoveIndex, Map map)
+        public RoboStepAlgo(IList<Hero> robots, int robotToMoveIndex, Map map,int Round)
         {
             Robots = robots;
             RobotToMoveIndex = robotToMoveIndex;
             Map = map;
             Robot = Robots[RobotToMoveIndex];
+            this.Round = Round;
         }
 
         public RobotCommand Execute()
@@ -77,14 +80,26 @@ namespace OlehMatsevych.RobotChallange.Algorithms
 
             Position stationPosition = stationHelper.FindNearestFreeStation(Robot, Map, Robots);
             EnergyStation station = Map.Stations.Where(t => t.Position.X== stationPosition.X && t.Position.Y == stationPosition.Y).First();
-
-            if (station.Energy > 40 && stationHelper.CountOfStationRobots(Robots, station) <= 2)
+            int enableRobotsOnStation = 1;
+            if (Round > 10)
+            {
+                enableRobotsOnStation = 3;
+            }
+            if (Round > 25)
+            {
+                enableRobotsOnStation = 5;
+            }
+            int stationRobots = stationHelper.CountOfStationRobots(Robots, station);
+            if (station.Energy > 40 && stationRobots <= enableRobotsOnStation)
             {
                 EnableEnergyDistance enableEnergy = new EnableEnergyDistance();
                 MovingType = enableEnergy.CheckForCollectType(stationPosition, Robot);
             }
             else
             {
+                Map.Stations.Remove(station);
+                stationPosition = stationHelper.FindNearestFreeStation(Robot, Map, Robots);
+
                 MovingType = MovingTypes.Move;
             }
             /*
@@ -114,10 +129,8 @@ namespace OlehMatsevych.RobotChallange.Algorithms
                         }
                     }
                     Position newPosition = stationHelper.FindNearestEnergyPlace(Robot, enableStationPositions, Robots);
-                    while (Robot.Energy < DistanceHelper.FindDistance(Robot.Position, newPosition))
+                    if (Robot.Energy < DistanceHelper.FindDistance(Robot.Position, newPosition))
                     {
-                        if (enableStationPositions.Count == 0)
-                            break;
                         enableStationPositions.Remove(newPosition);
                         newPosition = stationHelper.FindNearestEnergyPlace(Robot, enableStationPositions, Robots);
 
@@ -139,17 +152,15 @@ namespace OlehMatsevych.RobotChallange.Algorithms
                         }
                     }
                     Position newPosition = stationHelper.FindNearestEnergyPlace(Robot, enableStationPositions, Robots);
-                    while (Robot.Energy < DistanceHelper.FindDistance(Robot.Position, newPosition))
+                    if (Robot.Energy < DistanceHelper.FindDistance(Robot.Position, newPosition))
                     {
-                        if (enableStationPositions.Count == 0)
-                            break;
                         enableStationPositions.Remove(newPosition);
                         newPosition = stationHelper.FindNearestEnergyPlace(Robot, enableStationPositions, Robots);
                         
                     }
                     Position = newPosition;
                 }
-                else if (stationPosition.X <= Robot.Position.X && stationPosition.Y >= Robot.Position.Y)   //4
+                else if (stationPosition.X < Robot.Position.X && stationPosition.Y > Robot.Position.Y)   //4
                 {
                     //(+inf;-inf)
                     for (int i = stationPosition.X; i >= stationPosition.X-2; i--)
@@ -164,17 +175,15 @@ namespace OlehMatsevych.RobotChallange.Algorithms
                         }
                     }
                     Position newPosition = stationHelper.FindNearestEnergyPlace(Robot, enableStationPositions, Robots);
-                    while (Robot.Energy < DistanceHelper.FindDistance(Robot.Position, newPosition))
+                    if (Robot.Energy < DistanceHelper.FindDistance(Robot.Position, newPosition))
                     {
-                        if (enableStationPositions.Count == 0)
-                            break;
                         enableStationPositions.Remove(newPosition);
                         newPosition = stationHelper.FindNearestEnergyPlace(Robot, enableStationPositions, Robots); 
                        
                     }
                     Position = newPosition;
                 }
-                else if (stationPosition.X <= Robot.Position.X && stationPosition.Y <= Robot.Position.Y)   //2
+                else if (stationPosition.X < Robot.Position.X && stationPosition.Y < Robot.Position.Y)   //2
                 {
                     //(+inf;+inf)
                     for (int i = stationPosition.X; i >= stationPosition.X-2; i--)
@@ -189,10 +198,8 @@ namespace OlehMatsevych.RobotChallange.Algorithms
                         }
                     }
                     Position newPosition = stationHelper.FindNearestEnergyPlace(Robot, enableStationPositions, Robots);
-                    while (Robot.Energy < DistanceHelper.FindDistance(Robot.Position, newPosition))
+                    if (Robot.Energy < DistanceHelper.FindDistance(Robot.Position, newPosition))
                     {
-                        if (enableStationPositions.Count == 0)
-                            break;
                         enableStationPositions.Remove(newPosition);
                         newPosition = stationHelper.FindNearestEnergyPlace(Robot, enableStationPositions, Robots);
                         

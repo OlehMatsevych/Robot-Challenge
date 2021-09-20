@@ -2,7 +2,7 @@
 {
     public class Settings
     {
-        public static int MinEnergyForCreateNewRobot { get; private set; } = 300;
+        public static int MinEnergyForCreateNewRobot { get; private set; } = 325;
 
         public enum RobotTypeByEnergy
         {
